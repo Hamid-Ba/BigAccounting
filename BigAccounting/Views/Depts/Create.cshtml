@@ -1,0 +1,85 @@
+﻿@model DataLayer.Models.ViewModels.DeptsVM.DeptsCreateVM
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <form asp-action="Create" method="post">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        ایجاد بدهی جدید
+                    </div>
+                    <div class="card-body">
+                        <div class="col-md-12">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label asp-for="Price" class="form-control-label"></label>
+                                        <input asp-for="Price" class="form-control" placeholder="مبلغ بدهی">
+                                        <span asp-validation-for="Price" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="CreditorsID" class="form-control-label"></label>
+                                        <select asp-for="CreditorsID" asp-items="ViewBag.CreditorsID" class="select2 js-states form-control">
+                                            <option value="">انتخاب کنید</option>
+                                        </select>
+                                        <span asp-validation-for="CreditorsID" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="DeptrosID" class="form-control-label"></label>
+                                        <select asp-for="DeptrosID" asp-items="ViewBag.DeptorsID" class="select2 js-states form-control" multiple="multiple">
+                                            <option value="">انتخاب کنید</option>
+                                        </select>
+                                        <span asp-validation-for="DeptrosID" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label asp-for="Description" class="form-control-label"> </label>
+                                        <textarea asp-for="Description" class="form-control">
+
+                                                        </textarea>
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="checkbox" asp-for="IsPaid" class="ml-1" />
+                                        <label asp-for="IsPaid" class="form-control-label"> </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-light text-right">
+                        <button type="submit" class="btn btn-success float-left">ذخیره اطلاعات</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

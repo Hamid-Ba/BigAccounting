@@ -1,0 +1,33 @@
+﻿@model DataLayer.Models.Member
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>آیا از حذف @Model.Name اطمینان دارید؟</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mobile)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="MemberID" />
+        <input type="hidden" asp-for="CreditorID" />
+        <input type="hidden" asp-for="DeptorID" />
+        <input type="submit" value="حذف" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-info">بازگشت</a>
+    </form>
+</div>

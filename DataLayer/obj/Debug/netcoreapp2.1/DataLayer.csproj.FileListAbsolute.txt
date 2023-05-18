@@ -1,0 +1,12 @@
+C:\Users\Danesh\Documents\Visual Studio 2019\Projects\Asp Core Pro\BigAccounting\DataLayer\bin\Debug\netcoreapp2.1\DataLayer.deps.json
+C:\Users\Danesh\Documents\Visual Studio 2019\Projects\Asp Core Pro\BigAccounting\DataLayer\bin\Debug\netcoreapp2.1\DataLayer.runtimeconfig.json
+C:\Users\Danesh\Documents\Visual Studio 2019\Projects\Asp Core Pro\BigAccounting\DataLayer\bin\Debug\netcoreapp2.1\DataLayer.runtimeconfig.dev.json
+C:\Users\Danesh\Documents\Visual Studio 2019\Projects\Asp Core Pro\BigAccounting\DataLayer\bin\Debug\netcoreapp2.1\DataLayer.dll
+C:\Users\Danesh\Documents\Visual Studio 2019\Projects\Asp Core Pro\BigAccounting\DataLayer\bin\Debug\netcoreapp2.1\DataLayer.pdb
+C:\Users\Danesh\Documents\Visual Studio 2019\Projects\Asp Core Pro\BigAccounting\DataLayer\obj\Debug\netcoreapp2.1\DataLayer.csprojAssemblyReference.cache
+C:\Users\Danesh\Documents\Visual Studio 2019\Projects\Asp Core Pro\BigAccounting\DataLayer\obj\Debug\netcoreapp2.1\DataLayer.AssemblyInfoInputs.cache
+C:\Users\Danesh\Documents\Visual Studio 2019\Projects\Asp Core Pro\BigAccounting\DataLayer\obj\Debug\netcoreapp2.1\DataLayer.AssemblyInfo.cs
+C:\Users\Danesh\Documents\Visual Studio 2019\Projects\Asp Core Pro\BigAccounting\DataLayer\obj\Debug\netcoreapp2.1\DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\Danesh\Documents\Visual Studio 2019\Projects\Asp Core Pro\BigAccounting\DataLayer\obj\Debug\netcoreapp2.1\DataLayer.dll
+C:\Users\Danesh\Documents\Visual Studio 2019\Projects\Asp Core Pro\BigAccounting\DataLayer\obj\Debug\netcoreapp2.1\DataLayer.pdb
+C:\Users\Danesh\Documents\Visual Studio 2019\Projects\Asp Core Pro\BigAccounting\DataLayer\obj\Debug\netcoreapp2.1\DataLayer.genruntimeconfig.cache

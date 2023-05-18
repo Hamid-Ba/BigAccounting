@@ -1,0 +1,79 @@
+﻿@model DataLayer.Models.ViewModels.DeptsVM.DeptsIndexVM
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        جزئیات بدهی @Model.Description
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div>
+                            طلبکاران : @Model.CreditorsNames
+                        </div>
+
+                        <div>
+                            بدهکاران : @Model.DeptrosNames
+                        </div>
+
+                        <div>
+                            مبلغ بدهی : @Model.Price
+                        </div>
+                    </div>
+
+                    <div class=" col-md-6">
+
+                        <div>
+                            تاریخ انتشار در سایت : @Model.DateTime.ToShamsi()
+                        </div>
+
+                        <div>
+                            @{
+                                decimal eachDept = Model.Price / ViewBag.DeptCount;
+                            }
+                            بدهی هر نفر : @eachDept
+                        </div>
+
+                        <div>
+                            @{
+                                decimal eachCredit = Model.Price / ViewBag.CreditCount;
+                            }
+
+                            طلب هر نفر :  @eachCredit  
+                        </div>
+
+
+                        <div>
+                            وضعیت :
+                            @if (Model.IsPaid == true)
+                            {
+                                <span class="badge badge-success btn-block">پرداخت شده</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-danger btn-block">پرداخت نشده</span>
+                            }
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-12">
+                    <hr />
+                    خلاصه بدهی : @Model.Description
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

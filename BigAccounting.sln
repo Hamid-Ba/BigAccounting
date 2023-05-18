@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigAccounting", "BigAccounting\BigAccounting.csproj", "{93ED1C77-916B-44DA-918C-1058A1454437}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{CFD3B10A-D1AF-4CB2-A962-93D5A2C998CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{93ED1C77-916B-44DA-918C-1058A1454437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93ED1C77-916B-44DA-918C-1058A1454437}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93ED1C77-916B-44DA-918C-1058A1454437}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93ED1C77-916B-44DA-918C-1058A1454437}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFD3B10A-D1AF-4CB2-A962-93D5A2C998CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFD3B10A-D1AF-4CB2-A962-93D5A2C998CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFD3B10A-D1AF-4CB2-A962-93D5A2C998CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFD3B10A-D1AF-4CB2-A962-93D5A2C998CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3DD6132D-3439-4AF8-8935-811D73A35F9C}
+	EndGlobalSection
+EndGlobal

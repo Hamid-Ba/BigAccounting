@@ -1,0 +1,157 @@
+﻿@model IEnumerable<DataLayer.Models.ViewModels.DeptsVM.DeptsIndexVM>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    .pagination {
+        justify-content: center;
+    }
+
+        .pagination li a {
+            position: relative;
+            display: block;
+            padding: .5rem .75rem;
+            margin-left: -1px;
+            line-height: 1.25;
+            color: #777;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+        }
+
+            .pagination li a:hover {
+                color: #515151;
+                text-decoration: none;
+                background-color: #e9ecef;
+                border-color: #dee2e6;
+            }
+
+        .pagination .active a {
+            z-index: 1;
+            color: #fff;
+            background-color: #42a5f5;
+            border-color: #42a5f5;
+        }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-light">
+                لیست بدهی ها
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+
+                        <div class="col-md-4 mb-3 padding-0px">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> جستجو</button>
+                                </span>
+                                <input id="input-group-1" name="searchTitle" class="form-control" placeholder="نام طلبکار را واردکنید ..." type="text">
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+
+
+                            <div class="row" style="padding-right:10px">
+                                <label class="ml-2">تعداد ردیف</label>
+                                <div class="col-md-4 form-group padding-0px">
+                                    <select class="select2" name="PageSize" asp-items="ViewBag.Rows">
+                                    </select>
+                                </div>
+
+                                <div class="col-md-3 padding-0px">
+                                    <input type="submit" name="PageSize" value="نمایش بده" class="btn btn-primary float-left" />
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </form>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>ردیف</th>
+                                <th>طلبکار</th>
+                                <th>مبلغ بدهی</th>
+                                <th>تاریخ</th>
+                                <th>آیا پرداخت شده؟</th>
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="text-center">@ViewBag.RowOfTBL</td>
+                                    <td class="text-nowrap">@item.CreditorsNames</td>
+                                    <td>@item.Price تومان</td>
+                                    <td class="text-nowrap">@item.DateTime.ToShamsi()</td>
+                                    <td class="text-center">
+                                        @if (item.IsPaid == true)
+                                        {
+                                            <label class="badge badge-success btn-block">پرداخت شده</label>
+                                        }
+                                        else
+                                        {
+                                            <label class="badge badge-danger btn-block">پرداخت نشده</label>
+                                        }
+                                    </td>
+                                    <td class="text-center">
+                                        <a class="btn btn-info btn-icon" href="/Depts/Details/@item.DeptID"><i class="fa fa-eye text-white"></i></a>
+                                        @if (item.IsPaid != true)
+                                        {
+                                            <a class="btn btn-success btn-icon" href="/Depts/Edit/@item.DeptID"><i class="fa fa-edit text-white"></i></a>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn btn-default btn-icon" href="/Depts"><i class="fa fa-edit text-white"></i></a>
+                                        }
+                                        <a class="btn btn-danger btn-icon" href="/Depts/Delete/@item.DeptID"><i class="fa fa-trash text-white"></i></a>
+                                    </td>
+                                </tr>
+                                ViewBag.RowOfTBL++;
+                            }
+                        </tbody>
+                    </table>
+
+                    @if (ViewBag.SearchTitle == "")
+                    {
+
+                        <ul class="pagination">
+                            @if (ViewBag.ShowPrevious)
+                            {
+                                <li class="page-item">
+                                    <a asp-action="Index" asp-route-CurrentPage="@(ViewBag.currentPage - 1)" class="page-link"> @("<<") </a>
+                                </li>
+                            }
+
+                            @for (int j = 1; j <= ViewBag.AllPage; j++)
+                            {
+                                <li class="page-item @(j == ViewBag.currentPage ? "active" : "") ">
+                                    <a asp-action="Index" asp-route-CurrentPage="@j" class="page-link"> @j </a>
+                                </li>
+                            }
+
+                            @if (ViewBag.ShowNext)
+                            {
+                                <li class="page-item">
+                                    <a asp-action="Index" asp-route-CurrentPage="@(ViewBag.currentPage + 1)" class="page-link">@(">>")</a>
+                                </li>
+                            }
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

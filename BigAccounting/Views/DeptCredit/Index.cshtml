@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DataLayer.Models.Member>
+@inject DataLayer.Models.UnitOfWork.UnitOfWork UW;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>طلبکاران و بدهکاران</h2>
+
+@{ int i = 1; }
+<table class="table table-striped" style=" direction:rtl">
+    <thead>
+        <tr>
+            <th style="color:cadetblue">ردیف</th>
+            <th style="color:cadetblue">نام</th>
+            <th style="color:cadetblue">پولی که میخواد</th>
+            <th style="color:cadetblue">پولی که باید بده</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var mem in Model)
+        {
+
+            var creditor = UW.BaseRepository<DataLayer.Models.Creditor>().GetEntityByID(mem.CreditorID);
+            var deptor = UW.BaseRepository<DataLayer.Models.Deptor>().GetEntityByID(mem.DeptorID);
+
+            <tr>
+                <td>@i</td>
+                <td> <a asp-action="SingleDeptCredit" asp-route-memberID="@mem.MemberID"> @mem.Name </a> </td>
+                <td>@creditor.GetMoney تومان</td>
+                <td>@deptor.DeptMoney تومان</td>
+                @{i++;}
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+

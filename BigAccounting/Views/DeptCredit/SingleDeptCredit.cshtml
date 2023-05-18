@@ -1,0 +1,96 @@
+﻿@model DataLayer.Models.ViewModels.DeptCreditVM.DeptCreditIndexVM
+@inject DataLayer.Models.UnitOfWork.UnitOfWork UW;
+@{
+    ViewData["Title"] = "SingleDeptCredit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>تراکنش @Model.Name</h2>
+
+<div style="width:80%; margin:30px; direction:rtl">
+
+    <div class="form-group">
+
+        نام : @Model.Name
+        <br />
+        کل پولی که میخواد : @Model.AllMoneyWant تومان
+        <br />
+        کل پولی که باید بده : @Model.AllMoneyPay تومان
+
+    </div>
+
+</div>
+
+@{ int i = 1; }
+<table class="table table-striped" style=" direction:rtl">
+    <thead>
+        <tr>
+            <th style="color:cadetblue">ردیف</th>
+            <th style="color:cadetblue">نام</th>
+            <th style="color:cadetblue">پولی که میخواد از</th>
+            <th style="color:cadetblue">پولی که باید بده به</th>
+            <th style="color:cadetblue">عملیات</th>
+        </tr>
+    </thead>
+
+    @{ var users = UW.BaseRepository<DataLayer.Models.Member>().GetAllEntities().Where(m => m.MemberID != Model.DeptCreditID);}
+
+    <tbody>
+
+
+        @foreach (var item in users)
+        {
+
+            int WantMoney = 0;
+            int PayMoney = 0;
+
+            foreach (var dept in Model.DeptWhoIsCreditorOnThem)
+            {
+                if (dept.IsPaid == false && dept.Delete == false)
+                {
+                    if (dept.Dept_Deptors.Any(d => d.DeptorID == item.DeptorID))
+                    {
+                        WantMoney += (int)(dept.Price / dept.Dept_Creditors.Count)/dept.Dept_Deptors.Count;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            foreach (var dept in Model.DeptWhoIsDeptorOnThem)
+            {
+                if (dept.IsPaid == false && dept.Delete == false)
+                {
+                    if (dept.Dept_Creditors.Any(d => d.CreditorID == item.CreditorID))
+                    {
+                        PayMoney += (int)(dept.Price / dept.Dept_Creditors.Count)/dept.Dept_Deptors.Count;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            //        var Params = new Dictionary<string, string>
+            //{
+            //            { "PayMoney" , PayMoney.ToString() },
+            //            { "CreditorID" , item.CreditorID.ToString()},
+            //            { "UserID" , Model.DeptCreditID.ToString() }
+            //        };
+
+            <tr>
+                <td>@i</td>
+                <td> <a asp-action="SingleDeptCredit" asp-route-memberID="@item.MemberID"> @item.Name </a> </td>
+                <td>@WantMoney تومان</td>
+                <td>@PayMoney تومان</td>
+                <td> <a class="btn btn-info btn-block">صاف کردن قرض @item.Name</a> </td>
+
+                @{ i++; }
+            </tr>
+        }
+    </tbody>
+
+</table>
